@@ -1,1 +1,1 @@
-# Spring_boot_Oauth_2_Authorization_Server
+# Spring_Boot_Oauth_2_Security
