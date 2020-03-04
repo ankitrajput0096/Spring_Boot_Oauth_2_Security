@@ -27,7 +27,7 @@ public class SecureapplicationApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		log.info("Inside the commandLine Runner! Feeling awesome !");
-//		userService.createUser("admin@email.com", "admin");   //un-comment it for first time
+		userService.createUser("admin@email.com", "admin");   //un-comment it for first time
 		log.info("the admin is Created");
 	}
 

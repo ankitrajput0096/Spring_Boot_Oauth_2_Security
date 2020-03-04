@@ -1,0 +1,29 @@
+version: "3"
+volumes:
+  postgres-data:
+    driver: local
+services:
+  db:
+    image: postgres:10.3
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: ankit
+      POSTGRES_USER: ankit
+    volumes:
+      - postgres-data:/var/lib/postgresql/postdata
+  authorizationserver:
+    build:
+      context: ./secureapplication
+    command: mvn clean spring-boot:run
+    ports:
+      - "8090:8090"
+    depends_on:
+      - db
+  resourceserver:
+    build:
+      context: ./resourceserver
+    ports:
+      - "8080:8080"
+    depends_on:
+      - authorizationserver
