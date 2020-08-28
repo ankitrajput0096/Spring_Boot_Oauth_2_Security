@@ -22,14 +22,17 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import javax.sql.DataSource;
 
 @Configuration
-public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
+public class AuthorizationServerConfiguration
+        extends AuthorizationServerConfigurerAdapter {
 
     private UserDetailsService userDetailsService;
     private AuthenticationManager authenticationManager;
     private DataSource dataSource;
 
     @Autowired
-    public AuthorizationServerConfiguration(UserDetailsService userDetailsService, AuthenticationManager authenticationManager, DataSource dataSource) {
+    public AuthorizationServerConfiguration(UserDetailsService userDetailsService,
+                                            AuthenticationManager authenticationManager,
+                                            DataSource dataSource) {
         this.userDetailsService = userDetailsService;
         this.authenticationManager = authenticationManager;
         this.dataSource = dataSource;

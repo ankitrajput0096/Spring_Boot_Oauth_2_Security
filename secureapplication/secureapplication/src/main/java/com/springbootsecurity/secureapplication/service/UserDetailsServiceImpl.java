@@ -29,24 +29,31 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    	com.springbootsecurity.secureapplication.model.User dbUser = userService.findByEmail(username);
+    public UserDetails loadUserByUsername(String username)
+            throws UsernameNotFoundException {
+    	com.springbootsecurity.secureapplication.model.User dbUser =
+                userService.findByEmail(username);
 
         if (dbUser == null) {
-            throw new UsernameNotFoundException(String.format("User '%s' can not be found", username));
+            throw new UsernameNotFoundException(String
+                    .format("User '%s' can not be found", username));
         }
 
-        User user = new User(dbUser.getEmail(), dbUser.getPassword(), dbUser.isActive(),
+        User user = new User(dbUser.getEmail(),
+                dbUser.getPassword(), dbUser.isActive(),
                 true, true,
                 true,
                 loadAuthorities(dbUser));
         return user;
     }
 
-    public Collection<GrantedAuthority> loadAuthorities(com.springbootsecurity.secureapplication.model.User user) {
+    public Collection<GrantedAuthority> loadAuthorities(
+            com.springbootsecurity.secureapplication.model.User user) {
         Collection<Role> userAuthorities = user.getRoles();
         Collection<GrantedAuthority> authorities =
-                userAuthorities.stream().map(userAuthority -> new SimpleGrantedAuthority(userAuthority.getRole())).collect(Collectors.toCollection(ArrayList::new));
+                userAuthorities.stream().map(userAuthority ->
+                        new SimpleGrantedAuthority(userAuthority.getRole()))
+                        .collect(Collectors.toCollection(ArrayList::new));
         return authorities;
     }
 

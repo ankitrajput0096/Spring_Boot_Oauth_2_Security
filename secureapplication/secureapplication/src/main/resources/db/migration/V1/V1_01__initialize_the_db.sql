@@ -50,5 +50,8 @@ CREATE TABLE IF NOT EXISTS oauth_approvals (
 );
 
 
-INSERT INTO oauth_client_details(client_id, resource_ids, client_secret, scope, authorized_grant_types, authorities, access_token_validity, refresh_token_validity, autoapprove)
-VALUES ('project_client', 'api-resource', '{bcrypt}$2a$10$1LET485G2Dc/vB.5jGKpCuNQBmcLFro3RoKb36v.C5MflNQVJVBkC', 'read,write', 'password,refresh_token', '', '43200', '2592000', 'false');
+INSERT INTO oauth_client_details(client_id, resource_ids, client_secret, scope, authorized_grant_types,
+authorities, access_token_validity, refresh_token_validity, autoapprove)
+VALUES ('project_client', 'api-resource',
+'{bcrypt}$2a$10$1LET485G2Dc/vB.5jGKpCuNQBmcLFro3RoKb36v.C5MflNQVJVBkC', 'read,write',
+'password,refresh_token', '', '43200', '2592000', 'false');
